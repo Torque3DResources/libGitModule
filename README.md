@@ -40,6 +40,13 @@ And if required, you can pull updates once the repository is open:
 GitConnection.update("origin", %branchName);
 ```
 
+If something goes wrong, you can also at any time call:
+```
+%errorMessage = GitConnection.getLastError();
+```
+Which will return the string of the last error message to occur allowing feedback or debugging when something goes wrong.
+
+
 ## Callback functions
 The main callback functions to worry about are:
 ```
@@ -55,10 +62,4 @@ Which is called when a step of progress is made, allowing one to track the overa
 ```
 function GitConnection::onComplete(%this, %stage, %errCode)
 ```
-And when the operation is complete.
-
-If something goes wrong, you can also at any time call:
-```
-%errorMessage = GitConnection.getLastError();
-```
-Which will return the string of the last error message to occur allowing feedback or debugging when something goes wrong.
+Which is called when the operation is complete.
